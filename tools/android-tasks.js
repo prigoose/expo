@@ -25,6 +25,9 @@ const LIB_NAMES = [
   'privatedata',
   'yogafastmath',
   'fabricjscjni',
+  'jscexecutor',
+  'fabricjni',
+  'turbomodulejsijni',
 ];
 
 function renameLib(lib, abiVersion) {
@@ -83,7 +86,7 @@ exports.renameJNILibsAsync = async function renameJNILibsAsync(abiVersion) {
   lineReader.on('line', line => {
     let pathForPackage = line.replace(/\./g, '\\/');
     let reactCommonPath = '../android/versioned-react-native/ReactCommon';
-    let reactAndroidJNIPath = '../android/versioned-react-native/ReactAndroid/src/main/jni';
+    let reactAndroidJNIPath = '../android/versioned-react-native/ReactAndroid/src/main';
     shell.exec(
       `find ${reactCommonPath} ${reactAndroidJNIPath} -type f -print0 | ` +
         `xargs -0 sed -i '' 's/${pathForPackage}/abi${abiVersion}\\/${pathForPackage}/g'`
@@ -93,7 +96,7 @@ exports.renameJNILibsAsync = async function renameJNILibsAsync(abiVersion) {
   // Update LOCAL_MODULE, LOCAL_SHARED_LIBRARIES, LOCAL_STATIC_LIBRARIES fields in .mk files
   let [reactCommonMkFiles, reactAndroidMkFiles] = await Promise.all([
     glob('../android/versioned-react-native/ReactCommon/**/*.mk'),
-    glob('../android/versioned-react-native/ReactAndroid/src/main/jni/**/*.mk'),
+    glob('../android/versioned-react-native/ReactAndroid/src/main/**/*.mk'),
   ]);
   let filenames = [...reactCommonMkFiles, ...reactAndroidMkFiles];
   await Promise.all(filenames.map(filename => processMkFileAsync(filename, abiVersion)));
