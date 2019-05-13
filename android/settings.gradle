@@ -20,8 +20,8 @@ apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 // Include unimodules.
 includeUnimodulesProjects([
     modulesPaths: ['../../packages'],
-    target: 'react-native',
-    exclude: [
+    target      : 'react-native',
+    exclude     : [
         'expo-module-template',
     ]
 ])
