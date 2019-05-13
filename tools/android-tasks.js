@@ -172,7 +172,7 @@ async function findUnimodules(pkgDir) {
       const buildGradle = await fs.readFile(buildGradlePath, 'utf-8');
 
       const name = unimoduleJson.name;
-      const version = buildGradle.match(/^version ?= ?'([0-9]+.[0-9]+.[0-9]+)'\n/m)[1] || pkgJson.version;
+      const version = buildGradle.match(/^version ?= ?'(.*?)'\n/m)[1] || pkgJson.version;
       const group = buildGradle.match(/^group ?= ?'([a-zA-Z]+.[a-zA-Z]+.[a-zA-Z]+)'\n/m)[1];
 
       console.log(`Found module ${group}:${name}:${version}`);
