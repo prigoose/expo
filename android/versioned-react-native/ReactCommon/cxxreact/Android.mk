@@ -20,7 +20,7 @@ LOCAL_CFLAGS := \
 LOCAL_CFLAGS += -fexceptions -frtti -Wno-unused-lambda-capture
 
 LOCAL_STATIC_LIBRARIES := boost
-LOCAL_SHARED_LIBRARIES := jsinspector libfolly_json glog
+LOCAL_SHARED_LIBRARIES := jsinspector libfolly_json_abi33_0_0 glog_abi33_0_0
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -29,3 +29,4 @@ $(call import-module,folly)
 $(call import-module,jsc)
 $(call import-module,glog)
 $(call import-module,jsinspector)
+
