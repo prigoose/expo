@@ -1,8 +1,8 @@
-package versioned.host.exp.exponent.modules.api.components.webview.events
+package abi33_0_0.host.exp.exponent.modules.api.components.webview.events
 
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
-import com.facebook.react.uimanager.events.RCTEventEmitter
+import abi33_0_0.com.facebook.react.bridge.WritableMap
+import abi33_0_0.com.facebook.react.uimanager.events.Event
+import abi33_0_0.com.facebook.react.uimanager.events.RCTEventEmitter
 
 /**
  * Event emitted when there is a loading progress event.
